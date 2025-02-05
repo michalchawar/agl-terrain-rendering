@@ -1,0 +1,63 @@
+Renderowanie terenu:
+
+Program renderuje teren na podstawie danych ze wskazanego folderu w formacie HGT. Dostępne są
+dwa widoki: 2D i 3D. W widoku 2D można przemieszczać się nad terenem, renderowanym jako płaska
+mapa (z współczynnikiem koordynatów x obliczanym dla środka załadowanych kafelków). W widoku 3D
+można przemieszczać się nad terenem, renderowanym jako glob o rzeczywistym promieniu. Wysokość
+kamery jest stała względem środka ziemi podczas przemieszczania się w przód, tył i na boki,
+można ją dostosowywać odpowiednimi klawiszami. Klawisze 0-9 odpowiadają za dobieranie LOD
+(opisane niżej). W przypadku braku danych o wysokości punktowi nadawana jest wysokość -1000 m. n.p.m.,
+co widać po mocnym niebieskim kolorze.
+
+Uruchamianie:
+
+./AGL3-terrain[.exe] <folder z danymi> [-lon <min> <max>] [-lat <min> <max>] [-start <longitude (float)> <latitude (float)> <elevation (int)>]
+
+Przykład:
+./AGL3-terrain ./data/ -lon 15 22 -lat 48 52
+./AGL3-terrain ./data/ -lon 17 24 -lat 50 54 -start 20.5 52 1200
+
+
+Wysokość n.p.m.:
+Uruchamiając program bez podania argumentu -start przy przejściu do trybu 3D wysokość zostanie
+każdorazowo automatycznie dostosowana do wysokości punktu, nad którym kamera się znajduje.
+Uruchamiająć program z podaniem argumentu -start przy przejściu do trybu 3D wysokość będzie 
+taka sama jak ustawieniu jej w poprzednim wejściu w ten tryb (lub podanej w argumencie 
+przy uruchomieniu programu).
+
+
+Sterowanie:
+
+Tab - przełączanie widoku
+
+Strzałki - obroty
+
+L-Shift - przyspieszenie
+L-Alt - przyspieszenie
+
++/- (Numpad) - przybliż/oddal
+*   (Numpad) - resetuj przybliżenie
+
+Q/E - pokaż krawędzie/ściany terenu
+
+
+Sterowanie 2D:
+
+W/S - góra/dół
+A/D - lewo/prawo
+Myszka - góra/dół/lewo/prawo
+
+Sterowanie 3D:
+
+W/S - przód/tył
+A/D - lewo/prawo
+Spacja/C - góra/dół
+Myszka - obroty
+
+
+
+Tryb debug (opcje):
+I - informacje o zwrocie kamery
+T - informacje o położeniu kątowym i wysokości
+N - informacje o wektorze ruchu (przed przeprocesowaniem przez kamerę i po)
+Z - informacje o pozycji w świecie (przed ruchem i po)
